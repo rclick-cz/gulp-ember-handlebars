@@ -64,6 +64,14 @@ Type: `Object`
 
 Compiler options to pass to `Ember.Handlebars.precompile()`.
 
+### options.processTemplatePath
+Type: `Function`
+Default: Get the relative name of the template file
+
+This option accepts a function which takes one argument (the template file)
+and returns a string which will be used as the template name.
+By default the filename is used.
+
 
 [travis-url]: http://travis-ci.org/fuseelements/gulp-ember-handlebars
 [travis-image]: https://secure.travis-ci.org/fuseelements/gulp-ember-handlebars.png?branch=master
