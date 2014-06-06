@@ -11,7 +11,7 @@ var defaultProcessName = function (name) {
   return n === 0 ? name : name.slice(0, -n);
 };
 
-var defaultTemplateName = function (file) {
+var defaultTemplatePath = function (file) {
     return file.relative;
 };
 
@@ -59,7 +59,7 @@ module.exports = function (options) {
       namespace = options.namespace || 'Ember.TEMPLATES',
       templateRoot = options.templateRoot || 'templates',
       processName = options.processName || defaultProcessName,
-      processTemplateName = options.processTemplateName || defaultTemplateName,
+      processTemplatePath = options.processTemplatePath || defaultTemplatePath,
       compilerOptions = options.compilerOptions || {},
       ts = new stream.Transform({objectMode: true});
 
@@ -83,8 +83,8 @@ module.exports = function (options) {
       return;
     }
 
-    // Get the name of the template
-    name = processTemplateName(file);
+    // Get the path name of the template
+    name = processTemplatePath(file);
     // Look out for those pesky windows path separators
     name = name.replace(/\\/g, '/');
     // Allow the user a chance to transform the name
